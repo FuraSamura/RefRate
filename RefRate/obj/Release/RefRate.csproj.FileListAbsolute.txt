@@ -1,0 +1,11 @@
+C:\Users\Samura\source\repos\RefRate\RefRate\bin\Release\RefRate.exe.config
+C:\Users\Samura\source\repos\RefRate\RefRate\bin\Release\RefRate.exe
+C:\Users\Samura\source\repos\RefRate\RefRate\bin\Release\RefRate.pdb
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.csproj.AssemblyReference.cache
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.csproj.SuggestedBindingRedirects.cache
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.Form1.resources
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.Properties.Resources.resources
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.csproj.GenerateResource.cache
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.csproj.CoreCompileInputs.cache
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.exe
+C:\Users\Samura\source\repos\RefRate\RefRate\obj\Release\RefRate.pdb

@@ -17,16 +17,6 @@ namespace RefRate
 {
     public partial class Form1 : Form
     {
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                // turn on WS_EX_TOOLWINDOW style bit
-                cp.ExStyle |= 0x80;
-                return cp;
-            }
-        }
         public Form1()
         {
             InitializeComponent();
@@ -157,27 +147,26 @@ namespace RefRate
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
-            //ShowInTaskbar = false;
             Form1 form1 = new Form1();
-            notifyIcon1.Visible = false;
-            //this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
-            //this.ShowInTaskbar = false;
             form1.Hide();
             try
             {
                 RegistryKey CurrentUserKey = Registry.CurrentUser;
 
                 string rate = "";
+                string id = "";
                 try
                 {
+
                     //RegistryKey localMachineKey = Registry.LocalMachine;
                     RegistryKey RefRateKey = CurrentUserKey.OpenSubKey("RefRateKey");
                     if (CurrentUserKey.OpenSubKey("RefRateKey") == null)
                     {
                         RegistryKey RefRateKeyC = CurrentUserKey.CreateSubKey("RefRateKey");
                         RefRateKeyC.SetValue("Rate", "60");
+                        RefRateKeyC.SetValue("Id", "65FA91E4-804A-11ED-AD62-806E6F6E6963");
                         RefRateKeyC.Close();
                     }
                     else
@@ -191,6 +180,7 @@ namespace RefRate
                     //RegistryKey localMachineKey = Registry.LocalMachine;
                     RegistryKey RefRateKey = CurrentUserKey.CreateSubKey("RefRateKey");
                     RefRateKey.SetValue("Rate", "60");
+                    RefRateKey.SetValue("Id", "65FA91E4-804A-11ED-AD62-806E6F6E6963");
                     RefRateKey.Close();
 
                 }
@@ -199,6 +189,7 @@ namespace RefRate
                     //RegistryKey localMachineKey = Registry.LocalMachine;
                     RegistryKey RefRateKey = CurrentUserKey.CreateSubKey("RefRateKey");
                     RefRateKey.SetValue("Rate", "60");
+                    RefRateKey.SetValue("Id", "65FA91E4-804A-11ED-AD62-806E6F6E6963");
                     RefRateKey.Close();
                 }
                 while (true)
@@ -206,8 +197,9 @@ namespace RefRate
                     RegistryKey RefRateKey = CurrentUserKey.OpenSubKey("RefRateKey");
 
                     rate = RefRateKey.GetValue("Rate").ToString();
+                    id = RefRateKey.GetValue("Id").ToString();
                     RefRateKey.Close();
-                    using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SYSTEM\\ControlSet001\\Control\\UnitedVideo\\CONTROL\\VIDEO\\{A2E1D0F8-F4B4-11EC-8EB2-806E6F6E6963}\\0000"))
+                    using (RegistryKey key = Registry.LocalMachine.OpenSubKey("SYSTEM\\ControlSet001\\Control\\UnitedVideo\\CONTROL\\VIDEO\\{"+ id + "}\\0000"))
                     {
                         if (key != null)
                         {
@@ -231,16 +223,10 @@ namespace RefRate
             }
         }
 
-        
-
-        private void notifyIcon1_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        private void Form1_VisibleChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
+           
+            this.Visible = this.Visible = false;
         }
     }
 }
